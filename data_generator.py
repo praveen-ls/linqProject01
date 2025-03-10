@@ -19,7 +19,7 @@ try:
     for i in range(0,10000):
         colorSelection = colors[random.randint(0,6)]
         jsonMessage={"color": colorSelection,"value": random.randint(1,100)}
-        sendMessage("workerDataTest",jsonMessage)
+        sendMessage("workerData",jsonMessage)
         time.sleep(1)
 except KafkaError as e:
     print(f"DEBUG:: Error occured: {e}")
