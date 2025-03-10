@@ -10,4 +10,6 @@ Prerequisite:
                          dbname=tsdb
                          table=message
   //Need to add gafana dashboard (proper explanation of all dependencies)
+  ![image](https://github.com/user-attachments/assets/fa644c2f-4a00-498e-b088-fe6a5c22d748)
+
 
