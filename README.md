@@ -3,8 +3,11 @@
 **Overview**
 A real-time data pipeline using:
 >Kafka for message streaming
+
 >Python for data processing
+
 >TimescaleDB (PostgreSQL-based) for time-series storage
+
 >Grafana for real-time data visualization
 
 **Architecture**
@@ -59,9 +62,8 @@ Grafana → Connects to TimescaleDB for visualization.
         docker run -d -p 3000:3000 --name=grafana --volume grafana-storage:/var/lib/grafana grafana/grafana-enterprise
         ```
         It can be accessed from `localhost:3000`, ensures that Grafana’s data is persisted across container restarts.
-
         Alert, Data source and Dashboard configurations (screenshots):
-         > Data Source configuration:
+        > Data Source configuration:
          ![image](https://github.com/user-attachments/assets/aa9f8c88-6c6a-4f09-91ce-4ad986124dad)
         > SMTP configuration:
         ![Screenshot 2025-03-11 180915](https://github.com/user-attachments/assets/396d3842-e545-4f55-b773-d53e1b2b42b9)
