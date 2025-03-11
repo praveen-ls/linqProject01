@@ -11,6 +11,7 @@ A real-time data pipeline using:
 >Grafana for real-time data visualization
 
 **Architecture**
+
 Data Generator (Python) → Produces color and value data to Kafka.
 Kafka → Handles message streaming.
 Python Worker → Consumes messages, aggregates, and stores them in TimescaleDB.
@@ -20,8 +21,10 @@ Grafana → Connects to TimescaleDB for visualization.
 **1. Prerequisites:**
   Docker & Docker Compose
   Python (Run the following commands to import python packages: pip install kafka-python, pip install psycopg2-binary )
+  
 **2. Setup and Run:**
-    *Kafka:*
+
+  *Kafka:*
       To run both kafka and zookeeper in docker container:
         To run Docker Compose file zk-single-kafka-single.yml in the folder dockerKafka (Reference : https://github.com/conduktor/kafka-stack-docker-compose/blob/master/zk-single-kafka-single.yml) Comand line:
         ```
@@ -33,7 +36,8 @@ Grafana → Connects to TimescaleDB for visualization.
         ```
         docker exec kafka1 kafka-topics --bootstrap-server kafka:9092 --create --topic workerData1
         ```
-    *Phthon files:*
+        
+  *Phthon files:*
       To run `data_generator.py`:
         From the dockerDataGenerator Folder, run the following commands,
         ```
@@ -46,7 +50,8 @@ Grafana → Connects to TimescaleDB for visualization.
         docker build -t pythonworker .
         docker run pythonworker
         ```
-    *TimescaleDB (Time series database):* 
+        
+  *TimescaleDB (Time series database):* 
         Timescale BD is a cloud instance,
         The credentials of the db :
                         > host=t4h6sqbzyc.xq0dr8321m.tsdb.cloud.timescale.com
@@ -56,7 +61,8 @@ Grafana → Connects to TimescaleDB for visualization.
                         > dbname=tsdb
                         > table=message (to save sum, average, timestamp of color values collected in the interval)
                         > table=aggregate (to save aggrigate average, count of colors when new values are stored)
-      *Grafana:*
+                        
+  *Grafana:*
         Grafana is installed through docker command:
         ```
         docker run -d -p 3000:3000 --name=grafana --volume grafana-storage:/var/lib/grafana grafana/grafana-enterprise
