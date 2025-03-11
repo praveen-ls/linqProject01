@@ -100,8 +100,9 @@ Grafana → Connects to TimescaleDB for visualization.
   ![image](https://github.com/user-attachments/assets/aa9f8c88-6c6a-4f09-91ce-4ad986124dad)
   
   *SMTP configuration:*
-        
-  ![Screenshot 2025-03-11 180915](https://github.com/user-attachments/assets/396d3842-e545-4f55-b773-d53e1b2b42b9)
+
+  ![image](https://github.com/user-attachments/assets/e5b184b6-33ad-4ab5-82fe-57f18e334db7)
+
   
   *Alert Configuration (If Average values of any color exceeds 75 at the interval will trigger mail) :*
         
