@@ -13,12 +13,17 @@ A real-time data pipeline using:
 **Architecture**
 
 Data Generator (Python) → Produces color and value data to Kafka.
+
 Kafka → Handles message streaming.
+
 Python Worker → Consumes messages, aggregates, and stores them in TimescaleDB.
+
 TimescaleDB → Stores aggregated time-series data.
+
 Grafana → Connects to TimescaleDB for visualization.
 
 **1. Prerequisites:**
+
   Docker & Docker Compose
   Python (Run the following commands to import python packages: pip install kafka-python, pip install psycopg2-binary )
   
