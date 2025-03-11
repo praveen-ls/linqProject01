@@ -50,7 +50,7 @@ Grafana → Connects to TimescaleDB for visualization.
         docker exec kafka1 kafka-topics --bootstrap-server kafka:9092 --create --topic workerData1
   ```
         
-  *Phthon files:*
+  *Python files:*
   
   To run `data_generator.py`:
   
@@ -81,7 +81,7 @@ Grafana → Connects to TimescaleDB for visualization.
                         > password=rs0b9u57afc1f344
                         > dbname=tsdb
                         > table=message (to save sum, average, timestamp of color values collected in the interval)
-                        > table=aggregate (to save aggrigate average, count of colors when new values are stored)
+                        > table=aggregate (to save aggregate average, count of colors when new values are stored)
                         
   *Grafana:*
   
