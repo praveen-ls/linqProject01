@@ -25,6 +25,7 @@ Grafana → Connects to TimescaleDB for visualization.
 **1. Prerequisites:**
 
   Docker & Docker Compose
+  
   Python (Run the following commands to import python packages: pip install kafka-python, pip install psycopg2-binary )
   
 **2. Setup and Run:**
@@ -32,30 +33,37 @@ Grafana → Connects to TimescaleDB for visualization.
   *Kafka:*
       To run both kafka and zookeeper in docker container:
         To run Docker Compose file zk-single-kafka-single.yml in the folder dockerKafka (Reference : https://github.com/conduktor/kafka-stack-docker-compose/blob/master/zk-single-kafka-single.yml) Comand line:
-        ```
-        docker compose -f zk-single-kafka-single.yml up -d
-        ```
-        Zookeeper will be available at `$DOCKER_HOST_IP:2181`
-        Kafka will be available at `$DOCKER_HOST_IP:9092`
-      To create topic:
+        
+  ```
+  docker compose -f zk-single-kafka-single.yml up -d
+  ```
+        
+  Zookeeper will be available at `$DOCKER_HOST_IP:2181`
+  Kafka will be available at `$DOCKER_HOST_IP:9092`
+  
+  To create topic:
         ```
         docker exec kafka1 kafka-topics --bootstrap-server kafka:9092 --create --topic workerData1
         ```
         
   *Phthon files:*
-      To run `data_generator.py`:
-        From the dockerDataGenerator Folder, run the following commands,
+  
+  To run `data_generator.py`:
+  
+  From the dockerDataGenerator Folder, run the following commands,
         ```
         docker build -t pythondatagenerator .
         docker run pythondatagenerator
         ```
-      To run `workers.py`:
-        From the dockerWorker folder, run the following commands,
+        
+  To run `workers.py`:
+  
+  From the dockerWorker folder, run the following commands,
         ```
         docker build -t pythonworker .
         docker run pythonworker
         ```
-        
+  
   *TimescaleDB (Time series database):* 
         Timescale BD is a cloud instance,
         The credentials of the db :
@@ -68,7 +76,8 @@ Grafana → Connects to TimescaleDB for visualization.
                         > table=aggregate (to save aggrigate average, count of colors when new values are stored)
                         
   *Grafana:*
-        Grafana is installed through docker command:
+  
+  Grafana is installed through docker command:
         ```
         docker run -d -p 3000:3000 --name=grafana --volume grafana-storage:/var/lib/grafana grafana/grafana-enterprise
         ```
@@ -90,7 +99,7 @@ Grafana → Connects to TimescaleDB for visualization.
         ![image](https://github.com/user-attachments/assets/ebd1eb92-ef0c-4e2b-8523-fcaed1b49db6)
         In Each queries only the color filter is changed for respective colors.
 
-        Dashboard preview:
+  Dashboard preview:
         ![image](https://github.com/user-attachments/assets/0be3fd3e-80b7-4c40-85a5-26c4a7f1ccfb)
         
 Final Docker containers setup:
