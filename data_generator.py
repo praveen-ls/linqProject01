@@ -4,7 +4,7 @@ import json
 import random
 import time
 
-server= "localhost:9092"
+server= "host.docker.internal:29092"
 dataGenerator = KafkaProducer(
     bootstrap_servers=[server],
     value_serializer=lambda x: json.dumps(x).encode('utf-8')
@@ -13,13 +13,12 @@ dataGenerator = KafkaProducer(
 def sendMessage(topic, message):
     dataGenerator.send(topic,message)
     dataGenerator.flush()
-
 colors = ["red", "blue", "green", "yellow","white","black","gray"]
 try:
-    for i in range(0,10000):
+    while(True):
         colorSelection = colors[random.randint(0,6)]
         jsonMessage={"color": colorSelection,"value": random.randint(1,100)}
-        sendMessage("workerData",jsonMessage)
+        sendMessage("workerData1",jsonMessage)
         time.sleep(1)
 except KafkaError as e:
     print(f"DEBUG:: Error occured: {e}")

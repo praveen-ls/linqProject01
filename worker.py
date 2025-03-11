@@ -5,8 +5,8 @@ import psycopg2
 import time
 from datetime import datetime
 
-server="localhost:9092"
-workersSubMessage = KafkaConsumer('workerData', bootstrap_servers=[server], auto_offset_reset='earliest', enable_auto_commit=True,value_deserializer=lambda x: x.decode('utf-8') if x else None
+server="host.docker.internal:29092"
+workersSubMessage = KafkaConsumer('workerData1', bootstrap_servers=[server], auto_offset_reset='earliest', enable_auto_commit=True,value_deserializer=lambda x: x.decode('utf-8') if x else None
     )
 
 #for message in workersSubMessage:
